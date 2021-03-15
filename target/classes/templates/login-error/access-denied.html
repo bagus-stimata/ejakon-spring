@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- <link href="../static/css/main.css" rel="stylesheet" th:href="@{~/css/main.css}" /> -->
+    <link rel="stylesheet" th:href="@{~/css/main.css}" />
+
+    <!-- <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script> -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css} "/> -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css} " />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap-responsive.css} " />
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+    <div th:replace="fragments/header.html :: headerfiles"></div>
+
+</head>
+
+<body>
+
+
+    <!-- <header th:insert="fragments.html :: nav"></header> -->
+    <!-- <div th:replace="fragments/header.html :: header-nav"></div> -->
+
+    <div class="d-flex justify-content-center" style="margin-top: 2rem;">
+        <!--Component Div yang ada dibawahnya akan di centerkan dan di press-->
+        <div class="jumbotron text-center">
+            <!-- Semua text yang ada dibawahnya akan di centerkan-->
+            <h1 class="display-4">ACCESS DENIED</h1>
+            <p class="lead">Anda tidak mempunyai hak</p>
+            <hr class="my-4">
+            <p></p>
+        </div>
+    </div>
+
+
+
+
+</body>

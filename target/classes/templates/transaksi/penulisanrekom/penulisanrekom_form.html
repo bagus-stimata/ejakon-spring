@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>SIMTARU PROBOLINGGO</title>
+    <meta name="description" content="spring-boot thymeleaf | home ">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!--
+    Stepper Link from Code Pen
+    https://codepen.io/flist/pen/mqXemY
+    -->
+
+
+    <!-- <link href="./main.css" rel="stylesheet"> -->
+    <link th:href="@{~/src/main.css}" rel="stylesheet">
+
+    <!-- <script th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+
+    <!-- Untuk Themes https://demo.dashboardpack.com/architectui-html-pro/index.html -->
+    <!-- Harus menggunakn bootstrap sendiri -->
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " /> -->
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+    <link rel="stylesheet" th:href="@{~/mycss/upload_image.css}">
+    <script th:src="@{~/myjs/upload_image.js}"></script>
+
+    <script th:src="@{~/ckeditor/ckeditor.js}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tombolBackPage, #tombolKembaliToList').click(function() {
+                // alert('kembali');
+                var url = "/transaksi/penulisanrekom";
+                $(location).attr('href', url);
+
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+    <br>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
+        <div class="col l6 m12 s12">
+            <form th:object="${domain}" th:action="@{~/transaksi/penulisanrekom/save_process}" method="post" enctype="multipart/form-data">
+
+                <div class="card">
+                    <div th:if="${saveUser eq 'success'}" class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Save Successfully</strong>
+                    </div>
+
+                    <div class="card-header">
+                        <button type="button" name="" id="tombolKembaliToList" class="btn btn-primary">Kembali</button>
+                    </div>
+
+                    <div class="card-content ">
+                        <input type="hidden" th:field="*{id}" th:value="*{id}" />
+                        <input type="hidden" th:field="*{tempInt1}" th:value="*{tempInt1}" />
+                        <input type="hidden" th:field="*{deskripsi}" th:value="*{deskripsi}" />
+
+
+                        <textarea th:field="*{isiRekom}" name="editor1" id="editor1" row="15" cols="80"></textarea>
+                        <script>
+                            CKEDITOR.replace('editor1');
+                        </script>
+
+                    </div>
+
+                    <div class="d-block text-right card-footer ">
+                        <!-- <a th:href="@{~/admin/users} " class="mr-2 btn-icon btn-icon-only btn btn-outline-info "><i class="fas fa-arrow-left btn-icon-wrapper "> </i>&nbsp;Kembali</a> -->
+                        <div class="row col l6 m12 s12">
+                            <div class="col-sm-3 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary">
+                            <small>Ganti dan Upload Peta Deliminasi</small><input type="file" id="file_1" name="file_1" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                            </label>
+                            </div>
+
+                            <div class="col l6 m6 s6">
+                                <br><br>
+
+                                <table class="col l6 m6 s6">
+                                    <thead>
+                                        <th></th>
+                                        <th style="width: 30px;"></th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Nama pemohon</td>
+                                            <td></td>
+                                            <td class="text-left"><b><span th:text="${domain.id !=0? domain.permohonanBean.namaPemohon: '' }"></span></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jenis Layanan</td>
+                                            <td></td>
+                                            <td class="text-left"><span th:text="${domain.id !=0? domain.permohonanBean.tipeLayananBean.description: ''}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rencana Pemanfaatan</td>
+                                            <td></td>
+                                            <td class="text-left"><span th:text="${domain.id !=0? domain.permohonanBean.rencanaPemanfaatanBean.description: ''}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lokasi Dimohon</td>
+                                            <td></td>
+                                            <td class="text-left" th:if="${domain.id !=0}">
+                                                <span th:text="${domain.id !=0? domain.permohonanBean.desaDimohonBean.description: ''}"></span> , Kecamatan
+                                                <span th:text="${domain.id !=0? domain.permohonanBean.desaDimohonBean.kecamatanBean.description: ''}"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="text-right col l6 m12 s12">
+                                <!-- <button type="button" id="print1" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary "><i class="fas fa-save btn-icon-wrapper ">&nbsp;Print</i></button> -->
+                                <button type="submit" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary "><i class="fas fa-save btn-icon-wrapper ">&nbsp;Simpan</i></button>
+<!--                                <a type="button" th:href="@{~/transaksi/penulisanrekom/print1}" th:target="_blank" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary "><i class="fas fa-save btn-icon-wrapper ">&nbsp;Print</i></a>-->
+                                    <a type="button" th:href="@{~/transaksi/penulisanrekom/print1/{id}(id=${id}) } " th:target="_blank" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary "><i class="fas fa-save btn-icon-wrapper ">&nbsp;Print</i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br>
+                <div class="card">
+                    <div class="card-content ">
+                        <img class="card-img-top " th:src="@{~/images/{imageName}(imageName=${domain.imageDigitasi})} " alt=" ">
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+
+    </div>
+
+        <script type="text/javascript " th:src="@{~/src/assets/scripts/main.js} "></script>
+
+
+
+        <script>
+            var password = document.getElementById("password "),
+                confirm_password = document.getElementById("confirm_password ");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don 't Match ");
+                } else {
+                    confirm_password.setCustomValidity(' ');
+                }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+
+
+
+
+</body>
+
+</html>

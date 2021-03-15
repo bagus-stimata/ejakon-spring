@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login Page</title>
+
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"> -->
+    <link th:rel="stylesheet" th:href="@{~/webjars/font-awesome/css/all.css} " />
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{~/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- <link rel="stylesheet" th:href="@{~/webjars/bootstrap/css/bootstrap.min.css} " /> -->
+    <!-- Material Design Bootstrap -->
+    <link th:href="@{~/css/mdb.min.css}" rel="stylesheet">
+
+    <style>
+        html,
+        body,
+        header,
+        .view {
+            height: 100vh;
+        }
+        
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 815px;
+            }
+        }
+        
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 650px;
+            }
+        }
+        
+        .intro-2 {
+            /* background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img%20(11).jpg")no-repeat center center; */
+            background: url("../app-images/background/slide-1.jpg")no-repeat center center;
+            background-size: cover;
+        }
+        
+        .top-nav-collapse {
+            background-color: #3f51b5 !important;
+        }
+        
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5 !important;
+            }
+        }
+        
+        @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5!important;
+            }
+        }
+        
+        .card {
+            background-color: rgba(229, 228, 255, 0.2);
+        }
+        
+        .md-form label {
+            color: #ffffff;
+        }
+        
+        h6 {
+            line-height: 1.7;
+        }
+        
+        .card {
+            margin-top: 30px;
+            /*margin-bottom: -45px;*/
+        }
+        
+        .md-form input[type=text]:focus:not([readonly]),
+        .md-form input[type=password]:focus:not([readonly]) {
+            border-bottom: 1px solid #8EDEF8;
+            box-shadow: 0 1px 0 0 #8EDEF8;
+        }
+        
+        .md-form input[type=text]:focus:not([readonly])+label,
+        .md-form input[type=password]:focus:not([readonly])+label {
+            color: #8EDEF8;
+        }
+        
+        .md-form .form-control {
+            color: #fff;
+        }
+        /* Toggle password */
+        
+         :root {
+            --info-color: #0099CC;
+        }
+        
+        .btn-toggle-pass {
+            border: none;
+            position: absolute;
+            top: 11px;
+            background: transparent;
+            right: 0;
+        }
+        
+        .btn-toggle-pass.active {
+            color: var(--info-color);
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!--Main Navigation-->
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <div class="container">
+
+                <a class="navbar-brand" href="#"><img style="max-height: 15%; max-width: 15%;" th:src="@{~/app-images/brand-images/logo-3.png}" /> <strong> SIMTARU</strong></a>
+
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                    </form>
+                </div> -->
+
+            </div>
+        </nav>
+
+        <!--Intro Section-->
+        <section class="view intro-2">
+            <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+
+
+                            <!--/Form with header-->
+                            <section class="form-elegant">
+                                <form id="login" th:action="@{/login}" method="post" th:object="${fuser}" class="form-horizontal">
+
+                                    <!--Form without header-->
+                                    <div class="card">
+
+                                        <div class="card-body mx-4">
+
+                                            <!--Header-->
+                                            <div class="text-center" style="max-width:20rem;margin:2rem auto;">
+                                                <img style="max-height: 100%; max-width: 100%;" th:src="@{~/app-images/brand-images/logo-1.png}" />
+                                                <!-- <h3 class="white-text mb-5"><strong>Masuk</strong></h3> -->
+                                            </div>
+
+
+                                            <!--Body-->
+                                            <!-- <div class="md-form">
+                                            <input type="text" id="Form-username-email1" class="form-control">
+                                            <label for="Form-username-email1">User name/email anda</label>
+                                        </div> -->
+
+                                            <!-- <div class="md-form pb-3">
+                                            <input type="password" id="Form-pass1" class="form-control">
+                                            <label for="Form-pass1">Password anda</label>
+                                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+                                          Password?</a></p>
+                                        </div> -->
+
+                                            <div class="md-form" style="max-width:20rem;margin:2rem auto;">
+                                                <input type="text" th:field="*{username}" name="username" id="id_username" class="form-control">
+                                                <label for="password-custom">No. KTP (probolinggo)</label>
+                                            </div>
+
+
+                                            <div class="md-form" style="max-width:20rem;margin:2rem auto;">
+                                                <input type="password" th:field="*{password}" name="password" id="id_password" class="form-control">
+                                                <label for="password">Password</label>
+                                            </div>
+
+
+
+                                            <div class="text-center mb-3">
+                                                <div></div>
+                                                <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Masuk</button>
+                                            </div>
+                                            <p class="font-small white-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with
+                                            </p>
+                                            <!-- <div class="text-center mb-3">
+                                            <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a"><i class="fab fa-google-plus-g white-text"></i> Google</button>
+                                        </div> -->
+                                            <div class="text-center mb-3">
+                                                <button class="btn btn-outline-white btn-rounded btn-block my-4 waves-light z-depth-0" type="submit"><i
+                                            class="fab fa-google-plus-g white-text"></i> Google</button>
+                                            </div>
+
+                                            <div class="row my-3 d-flex justify-content-center">
+                                                <!--Phone-->
+                                                <!-- <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+                                                class="fas fa-phone blue-text"></i></button> -->
+                                                <!--Facebook-->
+                                                <!-- <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+                                          class="fab fa-facebook-f blue-text text-center"></i></button> -->
+                                                <!--Google +-->
+                                                <!-- <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i
+                                          class="fab fa-google-plus-g blue-text"></i></button> -->
+                                            </div>
+
+                                        </div>
+
+                                        <!--Footer-->
+                                        <div class="modal-footer mx-5 pt-3 mb-1">
+                                            <p class="font-small grey-text d-flex justify-content-end">Belum sebagai pengguna? <a th:href="@{/register}" class="blue-text ml-1"> Daftar</a></p>
+                                        </div>
+
+                                    </div>
+                                    <!--/Form without header-->
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </header>
+    <!--Main Navigation-->
+
+
+    <!--  SCRIPTS  -->
+    <!-- JQuery -->
+    <script type="text/javascript" th:src="@{~/js/jquery.min.js}"></script>
+    <!-- <script th:src="@{~/webjars/jquery/jquery.min.js}"></script> -->
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" th:src="@{~/js/popper.min.js}"></script>
+    <!-- <script th:src="@{~/webjars/popper.js/umd/popper.min.js}"></script> -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- <script type="text/javascript" th:src="@{~/js/bootstrap.min.js}"></script> -->
+    <script th:src="@{~/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" th:src="@{~/js/mdb.min.js}"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        (($) => {
+
+            class Toggle {
+
+                constructor(element, options) {
+
+                    this.defaults = {
+                        icon: 'fa-eye'
+                    };
+
+                    this.options = this.assignOptions(options);
+
+                    this.$element = element;
+                    this.$button = $(`<button class="btn-toggle-pass"><i class="fa ${this.options.icon}"></i></button>`);
+
+                    this.init();
+                };
+
+                assignOptions(options) {
+
+                    return $.extend({}, this.defaults, options);
+                }
+
+                init() {
+
+                    this._appendButton();
+                    this.bindEvents();
+                }
+
+                _appendButton() {
+                    this.$element.after(this.$button);
+                }
+
+                bindEvents() {
+
+                    this.$button.on('click touchstart', this.handleClick.bind(this));
+                }
+
+                handleClick() {
+
+                    let type = this.$element.attr('type');
+
+                    type = type === 'password' ? 'text' : 'password';
+
+                    this.$element.attr('type', type);
+                    this.$button.toggleClass('active');
+                }
+            }
+
+            $.fn.togglePassword = function(options) {
+                return this.each(function() {
+                    new Toggle($(this), options);
+                });
+            }
+
+        })(jQuery);
+
+        $(document).ready(function() {
+            $('#password').togglePassword();
+            $('#password-custom').togglePassword({
+                'icon': 'fa-user'
+            });
+        })
+    </script>
+</body>
+
+</html>

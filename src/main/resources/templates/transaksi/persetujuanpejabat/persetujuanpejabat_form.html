@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>SIMTARU PROBOLINGGO</title>
+    <meta name="description" content="spring-boot thymeleaf | home ">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!--
+    Stepper Link from Code Pen
+    https://codepen.io/flist/pen/mqXemY
+-->
+
+
+    <!-- <link href="./main.css" rel="stylesheet"> -->
+    <link th:href="@{~/src/main.css}" rel="stylesheet">
+
+    <!-- <script th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+
+    <!-- Untuk Themes https://demo.dashboardpack.com/architectui-html-pro/index.html -->
+    <!-- Harus menggunakn bootstrap sendiri -->
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " /> -->
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+    <!--### DATA TABLES ###-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/responsive/2.2.5/css/responsive.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.jqueryui.min.css" /> -->
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script>
+    <!-- <script th:href="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/dataTables.responsive.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/responsive.bootstrap4.min.js}"></script>
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.jqueryui.min.js"></script> -->
+
+
+
+    <!-- STEPPER JQUERY -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://www.samclarke.com/assets/migrating-to-hugo/monokai.css" />
+    <!--NVD3-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+
+
+    <link rel="stylesheet" th:href="@{~/mycss/jquery_stepper.css}">
+    <script th:src="@{~/myjs/jquery_stepper.js}"></script>
+
+    <link rel="stylesheet" th:href="@{~/mycss/upload_image.css}">
+    <script th:src="@{~/myjs/upload_image.js}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#tombolBackPage, #tombolKembaliToList').click(function() {
+                // alert('kembali');
+                var url = "/transaksi/persetujuanpejabat";
+                $(location).attr('href', url);
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
+        <div th:insert="my-fragments/general-fragment.html :: fragment-app-header"> </div>
+
+        <div class="app-main">
+
+            <div th:insert="my-fragments/general-fragment.html :: fragment-app-sidebar"> </div>
+
+            <div class="app-main__outer ">
+
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="pe-7s-diamond icon-gradient bg-mean-fruit">
+                                </i>
+                                </div>
+                                <input id="pageId" type="hidden" th:value="${pageId}" />
+                                <span th:text="${pageTitle}">hello</span>
+                                <div class="page-title-subheading">
+                                </div>
+
+                            </div>
+
+                            <!-- <div class="page-title-actions">
+                        <button type="button" data-toggle="tooltip" title="Tidak ada pesan" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                                <i class="fa fa-bell"></i>
+                            </button>
+                    </div> -->
+                        </div>
+                    </div>
+
+                    <div th:if="${saveUser eq 'success'}" class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Save Successfully</strong>
+                    </div>
+                    <!-- <div class="alert alert-success alert-dismissable ">
+                        <span th:text="${saveUserInfo}" class="close " data-dismiss="alert " aria-hidden="true ">
+                    </div> -->
+
+
+                    <div class="table-row">
+
+                        <!-- <form > -->
+                        <form class="needs-validation" novalidate th:object="${domain}" th:action="@{~/transaksi/persetujuanpejabat/save_process}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" th:field="*{id}" th:value="*{id}" />
+                            <input type="hidden" th:field="*{tempInt1}" th:value="*{tempInt1}" />
+
+
+                            <div class="row">
+
+                                <div class="col l6 m12 s12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a id="tombolKembaliToList" class="waves-effect waves-dark btn blue next-step"><i class="fas fa-arrow-left btn-icon-wrapper "> </i>&nbsp;</a> &nbsp;&nbsp; PERSETUJUAN PEJABAT
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="stepper non-linear">
+                                                <li class="step active" id="step_1">
+                                                    <div class="step-title waves-effect waves-dark">Permohonan Pemanfaatan</div>
+                                                    <div class="step-content">
+                                                        <div class="row">
+
+
+                                                            <div class="table-responsive">
+                                                                <table id="table1" class="align-middle mb-0 table table-borderless table-striped table-hover table-fixed dt-responsive mdl-data-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center" style="max-width: 10px;"></th>
+                                                                            <th style="max-width: 20px;"></th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">1</td>
+                                                                            <td>Jenis Layanan</td>
+                                                                            <td><span th:text="${domain.tipeLayananBean.description}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">2</td>
+                                                                            <td>Rencana Pemanfaatan</td>
+                                                                            <td><span th:text="${domain.rencanaPemanfaatanBean.description}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">3</td>
+                                                                            <td>Desa Dimohon</td>
+                                                                            <td><span th:text="${domain.desaDimohonBean.description}"></span> , Kecamatan <span th:text="${domain.desaDimohonBean.kecamatanBean.description}"></span> </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">4</td>
+                                                                            <td>Sertifikat Kepemilikan</td>
+                                                                            <td><span th:text="${domain.jenisBuktiKepemilikanBean.description}"></span></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">5</td>
+                                                                            <td>Nomor Surat Kepemilikan</td>
+                                                                            <td><span th:text="${domain.nomorKepemilikan}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">6</td>
+                                                                            <td>Luas Tanah (m2)</td>
+                                                                            <td><span th:text="${domain.luasTanahDimohon}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">7</td>
+                                                                            <td>Titik Koordinat</td>
+                                                                            <td><small>Lat </small><span th:text="${domain.latDimohon}"></span> <small> Lon</small> <span th:text="${domain.lonDimohon}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">8</td>
+                                                                            <td>Batas Utara</td>
+                                                                            <td><span th:text="${domain.batasUtara}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">9</td>
+                                                                            <td>Batas Selatan</td>
+                                                                            <td><span th:text="${domain.batasSelatan}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">10</td>
+                                                                            <td>Batas Timur</td>
+                                                                            <td><span th:text="${domain.batasTimur}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">11</td>
+                                                                            <td>Batas Barat</td>
+                                                                            <td><span th:text="${domain.batasBarat}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">12</td>
+                                                                            <td>Jarak dari Fasilitas Pendidikan (meter)</td>
+                                                                            <td><span th:text="${domain.jarakFasumPendidikan}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">13</td>
+                                                                            <td>Jarak dari Fasilitas Perdagangan (meter)</td>
+                                                                            <td><span th:text="${domain.jarakFasumPerdagangan}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">14</td>
+                                                                            <td>Jarak Dari Fasilitas Perkantoran (meter)</td>
+                                                                            <td><span th:text="${domain.jarakFasumPerkantoran}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">15</td>
+                                                                            <td>Nama Lengkap Pemohon</td>
+                                                                            <td><b><span th:text="${domain.namaPemohon}"></span</b> </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">16</td>
+                                                                            <td>Alamat Pemohon</td>
+                                                                            <td><span th:text="${domain.alamatPemohon}"></span>,&nbsp; <span th:text="${domain.desaBean.description}"></span> , Kecamatan <span th:text="${domain.desaBean.kecamatanBean.description}"></span>                                                                                </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">17</td>
+                                                                            <td>Nomor KTP Pemohon</td>
+                                                                            <td><span th:text="${domain.noKtpPemohon}"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="text-center text-muted ">18</td>
+                                                                            <td>Telpon/WhatsApp</td>
+                                                                            <td><span th:text="${domain.telpPemohon}"></span></td>
+                                                                        </tr>
+
+
+                                                                    </tbody>
+
+                                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+
+
+                                                        <div class="step-actions">
+                                                            <button data-step-label="Validasi" class="waves-effect waves-dark btn blue next-step">Lanjut</button>
+                                                        </div>
+
+                                                    </div>
+                                                </li>
+
+                                                <li class="step" id="step_2">
+                                                    <div class="step-title waves-effect waves-dark">Penulisan Rekomendasi</div>
+                                                    <div class="step-content">
+                                                        <div class="step-actions">
+                                                            <button class="waves-effect waves-dark btn-flat previous-step">Kembali</button>
+                                                            <button class="waves-effect waves-dark btn blue next-step">Lanjut</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="step" id="step_">
+                                                    <div class="step-title waves-effect waves-dark">PERSETUJUAN PEJABAT</div>
+
+                                                    <div class="step-content">
+                                                        <div th:attr="hidden=${pejabatKe1 != 1}">
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <label for="customSelectStatusVerifikasi1" class="">Persetujuan Pejabat: Analisis Tata Ruang</label>
+                                                                    <select th:field="*{statusPersetujuan1}" type="select" id="customSelectStatusVerifikasi1" name="customSelectStatusVerifikasi1" class="custom-select">
+                                                                    <option value="" disabled>--Jenis Kepemilikan</option>
+                                                                    <option th:each=" domainItem, iStat : ${allStatusPersetujuan}"
+                                                                            th:value="${domainItem}"
+                                                                            th:utext="${domainItem.descriptionOps}"> 
+                                                                    </option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <div class="input-field col s16">
+                                                                        <input th:field="*{statusPersetujuan1Notes}" type="text" name="textfield" class="validate" />
+                                                                        <label for="textfield"><small>Catatan Validasi</small></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div th:attr="hidden=${pejabatKe2 != 1}">
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <label for="customSelectStatusVerifikasi1" class="">Persetujuan Pejabat: Kasi Pemanfaatan Tata Ruang</label>
+                                                                    <select th:field="*{statusPersetujuan2}" type="select" id="customSelectStatusVerifikasi1" name="customSelectStatusVerifikasi1" class="custom-select">
+                                                                    <option value="" disabled>--Jenis Kepemilikan</option>
+                                                                    <option th:each=" domainItem, iStat : ${allStatusPersetujuan}"
+                                                                            th:value="${domainItem}"
+                                                                            th:utext="${domainItem.descriptionOps}"> 
+                                                                    </option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <div class="input-field col s16">
+                                                                        <input th:field="*{statusPersetujuan2Notes}" type="text" name="textfield" class="validate" />
+                                                                        <label for="textfield"><small>Catatan Validasi</small></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div th:attr="hidden=${pejabatKe3 != 1}">
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <label for="customSelectStatusVerifikasi1" class="">Persetujuan Pejabat: Kabid Pemanfaatan Tata Ruang</label>
+                                                                    <select th:field="*{statusPersetujuan3}" type="select" id="customSelectStatusVerifikasi1" name="customSelectStatusVerifikasi1" class="custom-select">
+                                                                    <option value="" disabled>--Jenis Kepemilikan</option>
+                                                                    <option th:each=" domainItem, iStat : ${allStatusPersetujuan}"
+                                                                            th:value="${domainItem}"
+                                                                            th:utext="${domainItem.descriptionOps}"> 
+                                                                    </option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <div class="input-field col s16">
+                                                                        <input th:field="*{statusPersetujuan3Notes}" type="text" name="textfield" class="validate" />
+                                                                        <label for="textfield"><small>Catatan Validasi</small></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div th:attr="hidden=${pejabatKe4 != 1}">
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <label for="customSelectStatusVerifikasi1" class="">Persetujuan Pejabat: Kepala Dinas Pemanfaatan Tata Ruang</label>
+                                                                    <select th:field="*{statusPersetujuan4}" type="select" id="customSelectStatusVerifikasi1" name="customSelectStatusVerifikasi1" class="custom-select">
+                                                                    <option value="" disabled>--Jenis Kepemilikan</option>
+                                                                    <option th:each=" domainItem, iStat : ${allStatusPersetujuan}"
+                                                                            th:value="${domainItem}"
+                                                                            th:utext="${domainItem.descriptionOps}"> 
+                                                                    </option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class='form-field col s20 '>
+                                                                    <div class="input-field col s16">
+                                                                        <input th:field="*{statusPersetujuan4Notes}" type="text" name="textfield" class="validate" />
+                                                                        <label for="textfield"><small>Catatan Validasi</small></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="step-actions">
+                                                            <button class="waves-effect waves-dark btn blue" type="submit">KIRIM</button>
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+
+                                            </ul>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="modal fade " id="deleteModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+            <div class="modal-dialog " role="document ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <h5 class="modal-title " id="exampleModalLabel ">Konfirmasi Hapus Data</h5>
+                        <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                            <span aria-hidden="true ">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <p class="mb-0 ">Yakin akan melakukan <b>penghapusan</b> data secara <b>Permanent</b>?</p>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-success " data-dismiss="modal ">Batal</button>
+
+                        <a id="deleteButtonYes " class="btn btn-danger " data-dismiss="modal "> <i class="fas fa-trash-alt "></i>&nbsp;Hapus</a>
+                        <input type="hidden " id="idToDelete " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript " th:src="@{~/src/assets/scripts/main.js} "></script>
+
+
+        <script>
+            var password = document.getElementById("password "),
+                confirm_password = document.getElementById("confirm_password ");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don 't Match ");
+                } else {
+                    confirm_password.setCustomValidity(' ');
+                }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+
+
+
+
+</body>
+
+</html>

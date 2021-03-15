@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="headerfiles">
+    <title>Home</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- <link href="../static/css/main.css" rel="stylesheet" th:href="@{css/main.css}" /> -->
+    <link rel="stylesheet" th:href="@{~/css/main.css}" />
+
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.js}" /> -->
+    <!-- <link th:href="@{~/bootstrap.min.css}" rel="stylesheet"> -->
+    <!-- <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet"> -->
+
+    <!--Pakai dependendsi locator ya. supaya tidak perlu menuliskan versi-->
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+
+</head>
+
+<body>
+
+    <!-- Fragment #2 : Navbar contains nav links -->
+    <div th:fragment="nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/home}"><i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/profile/index}"><span class="fa fa-user-circle"></span>&nbsp;profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/accounting/index}"> <i class="fas fa-money-bill    "></i> &nbsp;Accounting</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{~/admin/index}"> <i class="fas fa-cloud"></i>&nbsp;Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}"> <i class="fas fa-sign-out    "></i> Logout</a><br>
+                    </li>
+
+                </ul>
+            </div>
+
+            <a class="navbar-brand  justify-content-end" href="#">Sping-Boot Security</a>
+        </nav>
+
+
+</body>

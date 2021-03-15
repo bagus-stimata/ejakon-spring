@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Register</title>
+    <meta name="description" content="spring-boot thymeleaf | Register ">
+
+    <div th:replace="fragments/header :: header-login"></div>
+        <!-- Harus di cek pada security dan dijalankna npm install (untuk kasus ini sudah di definisikan pada ini) -->
+        <!-- <link rel="stylesheet" th:href="@{~/icons/social/stylesheets/social_foundicons.css}"/> -->
+    <link th:rel="stylesheet" th:href="@{~/webjars/font-awesome/css/all.css} "/> 
+
+</head>
+<body>
+    <br/>
+    <hr/>
+    <div class="separator"></div>
+    
+    <div class="row">
+        <div class="container">
+            <div class="login-register-form-section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="col-xs-6"><a th:href="@{/login}">Login</a></li>
+                    <li class="active col-xs-6"><a  href="#register" data-toggle="tab">Register</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="register">
+
+                        <div th:if="${saveUser eq 'success'}" class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            <strong>User registered Successfully</strong> Please Login
+                        </div>
+
+                        <div th:if="${saveUser eq 'exist-name'}" class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            <strong>Error!</strong> User name already used !!!
+                        </div>
+                        <div th:if="${saveUser eq 'exist-email'}" class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            <strong>Error!</strong> User email already used !!!
+                        </div>
+                        <div th:if="${saveUser eq 'fail'}" class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            <strong>Error!</strong> Unexpected error !!!
+                        </div>
+
+                        <form id="registerForm" th:object="${reqUser}" th:action="@{/register/register_proses}" method="post"
+                            class="form-horizontal">
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                    <input th:field="*{username}" type="text" name="register_username"
+                                        class="form-control" placeholder="Username"
+                                        required="required" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    <input th:field="*{email}" type="email" name="register_email" class="form-control"
+                                        placeholder="Email"
+                                        required="required" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                    <input th:field="*{password}" type="password" name="register_password"
+                                        class="form-control" id="password"
+                                        placeholder="Password" required="required"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                    <input th:field="*{passwordConfirm}" type="password" name="register_cpassword"
+                                        class="form-control" id="confirm_password"
+                                        placeholder="Confirm Password" required="required"/>
+                                </div>
+                            </div>
+                            <input type="submit" value="Register" class="btn btn-success btn-custom"/>
+                        </form>
+
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div> 
+
+    <div id="footerSeparator"></div>
+    <footer class="navbar-default navbar-fixed-bottom">
+        <div class="separator" th:replace="fragments/footer :: footer"></div>
+    </footer>
+
+
+    <script>
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+
+</body>
+</html>

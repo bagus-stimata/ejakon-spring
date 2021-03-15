@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Database SBT Maluku</title>
+    <meta name="description" content="spring-boot thymeleaf | home ">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+
+    <!-- <link href="./main.css" rel="stylesheet"> -->
+    <link th:href="@{~/src/main.css}" rel="stylesheet">
+
+    <!-- <script th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+
+    <!-- Untuk Themes https://demo.dashboardpack.com/architectui-html-pro/index.html -->
+    <!-- Harus menggunakn bootstrap sendiri -->
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " /> -->
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+    <!--### DATA TABLES ###-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/responsive/2.2.5/css/responsive.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.jqueryui.min.css" /> -->
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script>
+    <!-- <script th:href="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/dataTables.responsive.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/responsive.bootstrap4.min.js}"></script>
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.jqueryui.min.js"></script> -->
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#tombolBackPage, #tombolKembaliToList').click(function() {
+                // alert('kembali');
+                var url = "/master/jenissarana";
+                $(location).attr('href', url);
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
+        <div th:insert="my-fragments/general-fragment.html :: fragment-app-header"> </div>
+
+        <div class="app-main">
+
+            <div th:insert="my-fragments/general-fragment.html :: fragment-app-sidebar"> </div>
+
+            <div class="app-main__outer ">
+
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="pe-7s-diamond icon-gradient bg-mean-fruit">
+                                </i>
+                                </div>
+                                <div>JENIS SARANA
+                                    <div class="page-title-subheading">Sub-Title Database SBT.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="page-title-actions">
+                        <button type="button" data-toggle="tooltip" title="Tidak ada pesan" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                                <i class="fa fa-bell"></i>
+                            </button>
+                    </div> -->
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="main-card mb-3 card">
+                                <div class="card-header">
+                                    <!-- <a th:href="@{~/admin/users}" class="mr-2 btn-icon btn-icon-only btn btn-outline-info "><i class="fas fa-arrow-left btn-icon-wrapper "> </i>&nbsp;Kembali</a> -->
+                                    <a id="tombolKembaliToList" class="mr-2 btn-icon btn-icon-only btn btn-outline-info "><i class="fas fa-arrow-left btn-icon-wrapper "> </i>&nbsp;Kembali</a>
+
+                                    <div class="btn-actions-pane-right">
+                                        <div class="btn-group" role="group" data-toggle="buttons">
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons" th:switch="${domain.tempInt1}">
+                                                <input id="text_btnGroup1" type="hidden" value="active" />
+
+                                                <label class="btn btn-outline-success btn-transition active" th:case="${0}">
+                                                        <input type="radio" name="option1" autocomplete="off" checked> <small>Baru</small>
+                                                    </label>
+                                                <label class="btn btn-outline-primary btn-transition active" th:case="${1}">
+                                                        <input type="radio" name="option2" autocomplete="off"> <small>Edit</small>
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title">Bootstrap 4 Form Validation</h5> -->
+                                    <form class="needs-validation" novalidate th:object="${domain}" th:action="@{~/master/jenissarana_form/save_process}" method="post">
+                                        <input type="hidden" th:field="*{id}" th:value="*{id}" />
+                                        <input type="hidden" th:field="*{tempInt1}" th:value="*{tempInt1}" />
+
+                                        <div th:if="${saveUser eq 'success'}" class="alert alert-success alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <strong>Save Successfully</strong>
+                                        </div>
+
+
+                                        <div class="form-row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationCustom01">Kode</label>
+                                                <input type="text" th:field="*{kode1}" class="form-control" id="validationCustom01" placeholder="Kode" value="" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    input dengan data yang benar.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="validationCustom03">Nama/Deskripsi</label>
+                                                <input th:field="*{description}" type="text" class="form-control" id="deskripsi" placeholder="deskripsi">
+                                                <div class="invalid-feedback">
+                                                    harus diisi.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="form-row">
+                                            <div class="form-check">
+                                                <input input th:field="*{locked}" class="form-check-input" type="checkbox">
+                                                <label class="form-check-label" for="invalidCheck">
+                                                        <span>Locked (Tidak aktif)</span>
+                                                    </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree before submitting.
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+
+
+                                        <div class="d-block text-right card-footer ">
+                                            <!-- <a th:href="@{~/admin/users}" class="mr-2 btn-icon btn-icon-only btn btn-outline-info "><i class="fas fa-arrow-left btn-icon-wrapper "> </i>&nbsp;Kembali</a> -->
+                                            <button type="submit" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary "><i class="fas fa-save btn-icon-wrapper ">&nbsp;Simpan</i></button>
+                                        </div>
+                                    </form>
+
+
+                                    <script>
+                                        (function() {
+                                            'use strict';
+                                            window.addEventListener('load', function() {
+                                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                                var forms = document.getElementsByClassName('needs-validation');
+                                                // Loop over them and prevent submission
+                                                var validation = Array.prototype.filter.call(forms, function(form) {
+                                                    form.addEventListener('submit', function(event) {
+                                                        if (form.checkValidity() === false) {
+                                                            event.preventDefault();
+                                                            event.stopPropagation();
+                                                        }
+                                                        form.classList.add('was-validated');
+                                                    }, false);
+                                                });
+                                            }, false);
+                                        })();
+                                    </script>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="modal fade " id="deleteModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+            <div class="modal-dialog " role="document ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <h5 class="modal-title " id="exampleModalLabel ">Konfirmasi Hapus Data</h5>
+                        <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                            <span aria-hidden="true ">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <p class="mb-0 ">Yakin akan melakukan <b>penghapusan</b> data secara <b>Permanent</b>?</p>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-success " data-dismiss="modal ">Batal</button>
+
+                        <a id="deleteButtonYes " class="btn btn-danger " data-dismiss="modal "> <i class="fas fa-trash-alt "></i>&nbsp;Hapus</a>
+                        <input type="hidden " id="idToDelete " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript " th:src="@{~/src/assets/scripts/main.js} "></script>
+
+
+        <script>
+            var password = document.getElementById("password"),
+                confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+
+
+</body>
+
+</html>

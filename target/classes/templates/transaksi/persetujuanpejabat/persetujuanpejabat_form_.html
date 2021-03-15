@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>SIMTARU PROBOLINGGO</title>
+    <meta name="description" content="spring-boot thymeleaf | home ">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!--
+    Stepper Link from Code Pen
+    https://codepen.io/flist/pen/mqXemY
+    -->
+
+
+    <!-- <link href="./main.css" rel="stylesheet"> -->
+    <link th:href="@{~/src/main.css}" rel="stylesheet">
+
+    <!-- <script th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+
+    <!-- Untuk Themes https://demo.dashboardpack.com/architectui-html-pro/index.html -->
+    <!-- Harus menggunakn bootstrap sendiri -->
+    <!-- <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " /> -->
+
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css} " />
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+    <!--### DATA TABLES ###-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css" /> -->
+    <link rel="stylesheet" th:href="@{~/DataTables/responsive/2.2.5/css/responsive.bootstrap4.min.css}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.jqueryui.min.css" /> -->
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script>
+    <!-- <script th:href="@{~/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js}"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script> -->
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/dataTables.responsive.min.js}"></script>
+
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap4.min.js"></script> -->
+    <script th:src="@{~/DataTables/responsive/2.2.5/js/responsive.bootstrap4.min.js}"></script>
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.jqueryui.min.js"></script> -->
+
+
+
+    <!-- STEPPER JQUERY -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://www.samclarke.com/assets/migrating-to-hugo/monokai.css" />
+    <!--NVD3-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+
+
+    <link rel="stylesheet" th:href="@{~/mycss/jquery_stepper.css}">
+    <script th:src="@{~/myjs/jquery_stepper.js}"></script>
+
+    <link rel="stylesheet" th:href="@{~/mycss/upload_image.css}">
+    <script th:src="@{~/myjs/upload_image.js}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#tombolBackPage, #tombolKembaliToList').click(function() {
+                // alert('kembali');
+                var url = "/transaksi/persetujuanpejabat";
+                $(location).attr('href', url);
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
+        <div th:insert="my-fragments/general-fragment.html :: fragment-app-header"> </div>
+
+        <div class="app-main">
+
+            <div th:insert="my-fragments/general-fragment.html :: fragment-app-sidebar"> </div>
+
+            <div class="app-main__outer ">
+
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="pe-7s-diamond icon-gradient bg-mean-fruit">
+                                </i>
+                                </div>
+                                <input id="pageId" type="hidden" th:value="${pageId}" />
+                                <span th:text="${pageTitle}">hello</span>
+                                <div class="page-title-subheading">
+                                </div>
+
+                            </div>
+
+                            <!-- <div class="page-title-actions">
+                        <button type="button" data-toggle="tooltip" title="Tidak ada pesan" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                                <i class="fa fa-bell"></i>
+                            </button>
+                    </div> -->
+                        </div>
+                    </div>
+
+
+
+                    <div class="table-row">
+
+                        <form>
+
+
+                            <div class="row">
+
+                                <div class="col l6 m12 s12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            &nbsp;&nbsp; PERSETUJUAN PEJABAT
+                                        </div>
+                                        <div class="card-content">
+                                            <ul class="stepper non-linear">
+                                                <li class="step active" id="step_1">
+                                                    <div class="step-title waves-effect waves-dark">Hasil Rekomendasi</div>
+                                                    <div class="step-content">
+                                                        <div class="row">
+                                                            <div>
+                                                                <div class='form-field col s20'>
+                                                                    <label for="customSelectJenisLayanan" class="">Hasil Rekomendasi</label>
+                                                                    <select type="select" id="customSelectJenisLayanan" name="customSelectJenisLayanan" class="custom-select">
+                                                                        <option value="" disabled>--Jenis Layanan</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class='form-field col s20'>
+                                                                    <label for="customSelectRencanaPemanfaatan" class="">Rencana Pemanfaatan</label>
+                                                                    <select type="select" id="customSelectRencanaPemanfaatan" name="customSelectRencanaPemanfaatan" class="custom-select">
+                                                                        <option value="" disabled>--Rencana Pemanfaatan</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class='form-field col s20'>
+                                                                    <label for="customSelectKecamatanDimohon" class="">Kecamatan Dimohon</label>
+                                                                    <select type="select" id="customSelectKecamatanDimohon" name="customSelectKecamatanDimohon" class="custom-select">
+                                                                        <option value="" disabled>--Kecamatan</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class='form-field col s20'>
+                                                                    <label for="customSelectDesaDimohon" class="">Desa Dimohon</label>
+                                                                    <select type="select" id="customSelectDesaDimohon" name="customSelectDesaDimohon" class="custom-select">
+                                                                        <option value="" disabled>--Desa Dimohon</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class='form-field  col s20'>
+                                                                    <label for="customSelectSertifikatKepemilikan" class="">Sertifikat Kepemilikan</label>
+                                                                    <select type="select" id="customSelectSertifikatKepemilikan" name="customSelectSertifikatKepemilikan" class="custom-select">
+                                                                        <option value="" disabled>--Jenis Kepemilikan</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class='form-field col s20 '>
+                                                                    <div class="input-field">
+                                                                        <label for="textfield"><small>Nomor Surat Kepemilikan</small></label>
+                                                                        <input type="text" name="textfield" class="required validate" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="step-actions">
+                                                            <button data-step-label="Validasi" class="waves-effect waves-dark btn blue next-step">Lanjut</button>
+                                                        </div>
+
+                                                    </div>
+                                                </li>
+
+                                                <li class="step" id="step_2">
+                                                    <div class="step-title waves-effect waves-dark">Catatan Tambahan</div>
+                                                    <div class="step-content">
+                                                        <div class="row">
+                                                            <div>
+                                                                <div class="form-row">
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small>Luas Tanah (m2)</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><smalL>Lat (7.758660)</smalL></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small>Lon (113.414194)</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s12">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small> Batas Utara</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small> Batas Selatan</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small> Barat</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='form-field col s20 '>
+                                                                        <div class="input-field col s16">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small> Batas Timur</small></label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="">
+                                                                    <div class='form-field col s10 '>
+                                                                        <div class="input-field col s10">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small>Jarak dari Fas Pendidikan (meter)</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='form-field col s10 '>
+                                                                        <div class="input-field col s10">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small>dari Perdagangan (meter)</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='form-field col s10 '>
+                                                                        <div class="input-field col s10">
+                                                                            <input type="text" name="textfield" class="required validate" />
+                                                                            <label for="textfield"><small>dari Perkantoran (meter)</small></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="step-actions">
+                                                            <button class="waves-effect waves-dark btn-flat previous-step">Kembali</button>
+                                                            <button class="waves-effect waves-dark btn blue next-step">Lanjut</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="step" id="step_5">
+                                                    <div class="step-title waves-effect waves-dark">Persetujuan</div>
+                                                    <div class="step-content">
+
+                                                        <div class="row">
+                                                            <ul>
+
+                                                                <div class="alert alert-success" role="alert">
+                                                                    Kasi Pemanfaatan Tata Ruang "Telah Menyetujui"
+                                                                </div>
+                                                                <div class="alert alert-success" role="alert">
+                                                                    Analis Tata Ruang "Telah Menyetujui"
+                                                                </div>
+                                                                <div class="alert alert-success" role="alert">
+                                                                    Tenaga Teknis Tata Ruang "Telah Menyetujui"
+                                                                </div>
+                                                                <div class="alert alert-danger" role="alert">
+                                                                    Kepala Dinas PUPR "Belum Mengabulkan Pemohonan"
+                                                                </div>
+
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="form-row">
+                                                            <div class='form-field col s20 '>
+
+                                                                <label for="customSelectJenisLayanan" class="">Validasi</label>
+                                                                <select type="select" id="customSelectJenisLayanan" name="customSelectJenisLayanan" class="custom-select">
+                                                                    <option>Dalam Proses</option>
+                                                                    <option>Valid</option>
+                                                                    <option>Tidak Valid</option>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-row">
+                                                            <div class='form-field col s20 '>
+                                                                <div class="input-field col s16">
+                                                                    <input type="text" name="textfield" class="required validate" />
+                                                                    <label for="textfield"><small>Catatan Validasi</small></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="step-actions">
+                                                            <button class="waves-effect waves-dark btn blue" type="submit">KIRIM</button>
+                                                        </div>
+
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="modal fade " id="deleteModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+            <div class="modal-dialog " role="document ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <h5 class="modal-title " id="exampleModalLabel ">Konfirmasi Hapus Data</h5>
+                        <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                            <span aria-hidden="true ">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <p class="mb-0 ">Yakin akan melakukan <b>penghapusan</b> data secara <b>Permanent</b>?</p>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-success " data-dismiss="modal ">Batal</button>
+
+                        <a id="deleteButtonYes " class="btn btn-danger " data-dismiss="modal "> <i class="fas fa-trash-alt "></i>&nbsp;Hapus</a>
+                        <input type="hidden " id="idToDelete " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript " th:src="@{~/src/assets/scripts/main.js} "></script>
+
+
+
+        <script>
+            var password = document.getElementById("password"),
+                confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match ");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+
+
+
+
+</body>
+
+</html>
